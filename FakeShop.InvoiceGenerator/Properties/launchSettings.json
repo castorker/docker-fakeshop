@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "FakeShop.InvoiceGenerator": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
