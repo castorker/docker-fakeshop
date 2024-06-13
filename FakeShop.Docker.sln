@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeShop.InvoiceGenerator",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeShop.OrderProcessor", "FakeShop.OrderProcessor\FakeShop.OrderProcessor.csproj", "{1FF8D899-E989-4D3D-837F-DDB151E4135D}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{810046D9-78FC-45F2-9EE7-C338E8A46A0B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1FF8D899-E989-4D3D-837F-DDB151E4135D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FF8D899-E989-4D3D-837F-DDB151E4135D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FF8D899-E989-4D3D-837F-DDB151E4135D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{810046D9-78FC-45F2-9EE7-C338E8A46A0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{810046D9-78FC-45F2-9EE7-C338E8A46A0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{810046D9-78FC-45F2-9EE7-C338E8A46A0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{810046D9-78FC-45F2-9EE7-C338E8A46A0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
