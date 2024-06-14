@@ -4,6 +4,8 @@ using FakeShop.Api.Middleware;
 using FakeShop.Api.Repositories;
 using Serilog;
 using Serilog.Events;
+using System.Data;
+using System.Data.SqlClient;
 
 var name = typeof(Program).Assembly.GetName().Name;
 
@@ -47,6 +49,9 @@ builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 
 builder.Services.AddSingleton<IOrderProcessingNotification, OrderProcessingNotification>();
+
+builder.Services.AddScoped<IDbConnection>(d => new SqlConnection(connectionString));
+builder.Services.AddScoped<IFakeShopRepository, FakeShopRepository>();
 
 // Register AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

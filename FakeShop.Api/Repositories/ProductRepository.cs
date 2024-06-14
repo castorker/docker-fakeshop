@@ -4,17 +4,21 @@ namespace FakeShop.Api.Repositories
 {
     public class ProductRepository : GenericRepository<Product>, IProductRepository
     {
+        private readonly IFakeShopRepository _repository;
         private readonly List<string> _validCategories = 
             new List<string> { "all", "boots", "waterproof jackets", "sleeping bags", "polars" };
         private readonly ILogger<ProductRepository> _logger;
 
-        public ProductRepository(ILogger<ProductRepository> logger)
+        public ProductRepository(IFakeShopRepository repository, 
+            ILogger<ProductRepository> logger)
         {
             _logger = logger ?? 
                 throw new ArgumentNullException(nameof(logger));
+            _repository = repository ?? 
+                throw new ArgumentNullException(nameof(repository));
         }
 
-        public Task<IEnumerable<Product>> GetProductsForCategory(string category)
+        public async Task<IEnumerable<Product>> GetProductsForCategory(string category)
         {
             _logger.LogInformation("Starting logic to get products for {category}", category);
 
@@ -32,7 +36,7 @@ namespace FakeShop.Api.Repositories
                 throw new Exception("Not implemented! No polars have been defined in 'database' yet!!!!");
             }
 
-            return GetAllProducts();
+            return await _repository.GetProducts(category);
 
             //return GetAllProducts().Where(a =>
             //    string.Equals("all", category, StringComparison.InvariantCultureIgnoreCase) ||

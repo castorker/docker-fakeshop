@@ -1,6 +1,9 @@
 using FakeShop.OrderProcessor;
 using Serilog.Events;
 using Serilog;
+using FakeShop.OrderProcessor.Repositories;
+using System.Data.SqlClient;
+using System.Data;
 
 var name = typeof(Program).Assembly.GetName().Name;
 
@@ -17,6 +20,10 @@ Log.Logger = new LoggerConfiguration()
 var builder = Host.CreateDefaultBuilder(args)
     .ConfigureServices((hostContext, services) =>
     {
+        services.AddSingleton<IDbConnection>(
+            db => new SqlConnection(hostContext.Configuration
+            .GetConnectionString("Database")));
+        services.AddSingleton<IInventoryRepository, InventoryRepository>();
         services.AddHostedService<Worker>();
     })
     .UseSerilog();

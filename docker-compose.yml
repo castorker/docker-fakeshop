@@ -14,6 +14,7 @@ services:
     depends_on: 
       - seq_in_dc
       - rabbit_in_dc
+      - sql_in_dc
 
   fakeshop.app:
     build:
@@ -32,6 +33,7 @@ services:
     depends_on: 
       - seq_in_dc
       - rabbit_in_dc
+      - sql_in_dc
 
   seq_in_dc:
     image: datalust/seq
@@ -45,4 +47,14 @@ services:
     ports:
       - 8088:15672
       
+  sql_in_dc:
+    build:
+      context: .
+      dockerfile: sql/sql.Dockerfile
+    restart: always
+    ports:
+      - "1440:1433"   
+    environment:      
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Sequel#22AdminContainers!
   

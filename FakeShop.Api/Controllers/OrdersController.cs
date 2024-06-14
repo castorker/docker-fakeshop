@@ -27,16 +27,15 @@ namespace FakeShop.Api.Controllers
         }
 
         [HttpPost]
-        public Guid SubmitOrder(OrderDto orderInfo)
+        public async Task<Guid> SubmitOrder(OrderDto orderInfo)
         {
             _logger.LogInformation($"Submitting order for {orderInfo.Quantity} of {orderInfo.ProductId}.");
 
             var orderToBeCreated = _mapper.Map<Order>(orderInfo);
 
-            var orderCreated = _orderRepository.PlaceOrder(orderToBeCreated, 1234); // would get customer id from authN system/User claims
+            var orderCreated = await _orderRepository.PlaceOrder(orderToBeCreated, 1234); // would get customer id from authN system/User claims
 
             return orderCreated;
         }
-
     }
 }

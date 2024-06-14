@@ -13,6 +13,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FakeShop.App", "FakeShop.Ap
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{F729F045-E89A-4229-B672-4C46333A5FC5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sql", "sql", "{7CE83843-918B-4AAB-A41B-F1CA8017D74E}"
+	ProjectSection(SolutionItems) = preProject
+		sql\entrypoint.sh = sql\entrypoint.sh
+		sql\InitializeDatabase.sql = sql\InitializeDatabase.sql
+		sql\setup.sh = sql\setup.sh
+		sql\sql.Dockerfile = sql\sql.Dockerfile
+		sql\wait-for-it.sh = sql\wait-for-it.sh
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
