@@ -9,7 +9,8 @@ Log.Logger = new LoggerConfiguration()
     .Enrich.FromLogContext()
     .Enrich.WithMachineName()
     .Enrich.WithProperty("Assembly", name)
-    .WriteTo.Seq("http://host.docker.internal:5341")
+    //.WriteTo.Seq("http://host.docker.internal:5341")
+    .WriteTo.Seq("http://seq_in_dc:5341")
     .WriteTo.Console()
     .CreateLogger();
 

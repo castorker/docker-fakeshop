@@ -25,6 +25,14 @@ services:
     depends_on: 
       - seq_in_dc
 
+  fakeshop.orderprocessor:
+    build:
+      context: .
+      dockerfile: FakeShop.OrderProcessor/Dockerfile
+    depends_on: 
+      - seq_in_dc
+      - rabbit_in_dc
+
   seq_in_dc:
     image: datalust/seq
     ports:
@@ -37,3 +45,4 @@ services:
     ports:
       - 8088:15672
       
+  

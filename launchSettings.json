@@ -5,7 +5,8 @@
       "commandVersion": "1.0",
       "serviceActions": {
         "fakeshop.api": "StartDebugging",
-        "fakeshop.app": "StartDebugging"
+        "fakeshop.app": "StartDebugging",
+        "fakeshop.orderprocessor": "StartDebugging"
       }
     }
   }
