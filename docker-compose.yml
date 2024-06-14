@@ -2,15 +2,26 @@ version: '3.4'
 
 services:
   fakeshop.api:
-    image: ${DOCKER_REGISTRY-}fakeshopapi
     build:
       context: .
       dockerfile: FakeShop.Api/Dockerfile
     ports:
-      - "8080:80"
+      - 8080
+      - 8081
     environment:
-      - SimpleProperty="from-compose"
-    depends_on:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - SimpleProperty="from-code-compose"
+    depends_on: 
+      - seq_in_dc
+
+  fakeshop.app:
+    build:
+      context: .
+      dockerfile: FakeShop.App/Dockerfile
+    ports:
+      - 8080
+      - 8081
+    depends_on: 
       - seq_in_dc
 
   seq_in_dc:

@@ -4,6 +4,6 @@ namespace FakeShop.Api.Repositories
 {
     public interface IProductRepository : IRepository<Product>
     {
-        IEnumerable<Product> GetProductsForCategory(string category);
+        Task<IEnumerable<Product>> GetProductsForCategory(string category);
     }
 }

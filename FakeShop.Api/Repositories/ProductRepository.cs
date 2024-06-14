@@ -4,7 +4,8 @@ namespace FakeShop.Api.Repositories
 {
     public class ProductRepository : GenericRepository<Product>, IProductRepository
     {
-        private readonly List<string> _validCategories = new List<string> { "all", "boots", "waterproof jackets", "sleeping bags", "polars" };
+        private readonly List<string> _validCategories = 
+            new List<string> { "all", "boots", "waterproof jackets", "sleeping bags", "polars" };
         private readonly ILogger<ProductRepository> _logger;
 
         public ProductRepository(ILogger<ProductRepository> logger)
@@ -13,7 +14,7 @@ namespace FakeShop.Api.Repositories
                 throw new ArgumentNullException(nameof(logger));
         }
 
-        public IEnumerable<Product> GetProductsForCategory(string category)
+        public Task<IEnumerable<Product>> GetProductsForCategory(string category)
         {
             _logger.LogInformation("Starting logic to get products for {category}", category);
 
@@ -31,15 +32,17 @@ namespace FakeShop.Api.Repositories
                 throw new Exception("Not implemented! No polars have been defined in 'database' yet!!!!");
             }
 
-            return GetAllProducts().Where(a =>
-                string.Equals("all", category, StringComparison.InvariantCultureIgnoreCase) ||
-                string.Equals(category, a.Category, StringComparison.InvariantCultureIgnoreCase));
+            return GetAllProducts();
+
+            //return GetAllProducts().Where(a =>
+            //    string.Equals("all", category, StringComparison.InvariantCultureIgnoreCase) ||
+            //    string.Equals(category, a.Category, StringComparison.InvariantCultureIgnoreCase));
 
         }
 
-        private static IReadOnlyList<Product> GetAllProducts()
+        private static async Task<IEnumerable<Product>> GetAllProducts()
         {
-            return new List<Product>
+            var products = new List<Product>
             {
                 new Product { Id = 1, Name = "Mountaineering", Category = "boots", Price = 200.00,
                     Description = "Perfect for rugged terrain adventures and alpine trekking." },
@@ -50,6 +53,8 @@ namespace FakeShop.Api.Repositories
                 new Product { Id = 4, Name = "Waterproof", Category = "boots", Price = 140.00,
                     Description = "They look like regular hiking boots, but the updated Chilkat Vs takes advantage of a waterproof and breathable construction to keep you dry." },
             };
+
+            return products;
         }
     }
 }

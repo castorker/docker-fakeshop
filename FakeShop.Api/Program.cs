@@ -67,10 +67,15 @@ if (app.Environment.IsDevelopment())
 
 app.UseCustomRequestLogging();
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
+app.UseRouting();
 app.UseAuthorization();
-
 app.MapControllers();
+
+//app.UseEndpoints(endpoints =>
+//{
+//    endpoints.MapControllers();
+//});
 
 app.Run();

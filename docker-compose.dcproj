@@ -4,7 +4,7 @@
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
     <DockerPublishLocally>False</DockerPublishLocally>
-    <ProjectGuid>810046d9-78fc-45f2-9ee7-c338e8a46a0b</ProjectGuid>
+    <ProjectGuid>f729f045-e89a-4229-b672-4c46333a5fc5</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
     <DockerServiceName>fakeshop.api</DockerServiceName>

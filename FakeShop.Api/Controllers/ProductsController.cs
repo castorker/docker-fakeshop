@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using FakeShop.Api.ApiModels;
 using FakeShop.Api.Repositories;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 
@@ -23,13 +22,13 @@ namespace FakeShop.Api.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<ProductDto> GetProducts(string category = "all")
+        public async Task<IEnumerable<ProductDto>> GetProducts(string category = "all")
         {
             //Log.Information("Starting controller action GetProducts for {category}", category);
             Log.ForContext("Category", category)
                .Information("Starting controller action GetProducts");
 
-            var products = _productRepository.GetProductsForCategory(category);
+            var products = await _productRepository.GetProductsForCategory(category);
 
             return _mapper.Map<IEnumerable<ProductDto>>(products);
         }
