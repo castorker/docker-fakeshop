@@ -1,4 +1,5 @@
 using FakeShop.Api;
+using FakeShop.Api.Integrations;
 using FakeShop.Api.Middleware;
 using FakeShop.Api.Repositories;
 using Serilog;
@@ -44,6 +45,8 @@ Log.ForContext("ConfigurationDebug", dbgView)
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+
+builder.Services.AddSingleton<IOrderProcessingNotification, OrderProcessingNotification>();
 
 // Register AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

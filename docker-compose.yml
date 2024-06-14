@@ -13,6 +13,7 @@ services:
       - SimpleProperty="from-code-compose"
     depends_on: 
       - seq_in_dc
+      - rabbit_in_dc
 
   fakeshop.app:
     build:
@@ -30,3 +31,9 @@ services:
       - '8005:80'
     environment:
       - ACCEPT_EULA=Y
+
+  rabbit_in_dc:
+    image: rabbitmq:3-management
+    ports:
+      - 8088:15672
+      
